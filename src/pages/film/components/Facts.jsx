@@ -72,7 +72,6 @@ const FactItem = ({ data, title, totalPage, currentPage, setCurrentPage }) => {
          </Content>
          <Pagination totalCount={totalPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </>
-
    )
 }
 

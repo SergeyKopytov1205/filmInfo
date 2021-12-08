@@ -30,7 +30,7 @@ const Item = styled.li`
 const StyledLink = styled(Link)`
    text-decoration: none;
 `
-const Contant = styled.div`
+const Picture = styled.div`
    width: 150px;
    height: 200px;
    position: relative;
@@ -62,9 +62,9 @@ const SliderFilms = React.memo(({ isLoading, fetchError, films, title }) => {
                return (
                   <Item key={item.kinopoiskId || item.filmId}>
                      <StyledLink to={`/film/${item.kinopoiskId || item.filmId}`}>
-                        <Contant>
+                        <Picture>
                            <Image src={item.posterUrlPreview} alt={item.nameRu} />
-                        </Contant>
+                        </Picture>
                      </StyledLink>
                   </Item>
                )

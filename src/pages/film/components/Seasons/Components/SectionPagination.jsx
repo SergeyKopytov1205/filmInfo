@@ -5,24 +5,20 @@ import styled from 'styled-components';
 const Container = styled.div`
    display: flex;
    gap: 10px;
-   justify-content: center;
+   justify-content: start;
 `
-const Page = styled.span`
+const Page = styled.div`
    cursor: pointer;
-   color: ${props => props.currentPage ? '#aaa' : '#333' };
+   color: ${props => props.currentPage ? '#aaa' : '#333'};
 `
 const Arrow = styled.div`
    cursor: pointer;
    color: orangered;
 `
 
-let SmallPagination = ({ totalCount, currentPage, setCurrentPage, portionSize = 5 }) => {
-   let pages = []
-   for (let i = 1; i <= totalCount; i++) {
-      pages.push(i)
-   }
+let SectionPagination = ({ data, currentPage, setCurrentPage, portionSize = 10 }) => {
 
-   const portionCount = Math.ceil(totalCount / portionSize)
+   const portionCount = Math.ceil(data.length / portionSize)
    let [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize))
    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
    let rigthPortionPageNumber = portionNumber * portionSize
@@ -33,15 +29,19 @@ let SmallPagination = ({ totalCount, currentPage, setCurrentPage, portionSize = 
 
    return <Container >
       {portionNumber > 1 && <Arrow onClick={() => { setPortionNumber(portionNumber - 1) }}>&#10094;</Arrow>}
-      {pages.length > 1 && pages
-         .filter(p => {
-            return p >= leftPortionPageNumber && p <= rigthPortionPageNumber
+      {data.length > 1 && data
+         .filter((item, index) => {
+            return index + 1 >= leftPortionPageNumber && index + 1 <= rigthPortionPageNumber
          })
-         .map(page => {
-            return <Page key={page} onClick={() => { setCurrentPage(page) }} currentPage={currentPage === page } >{page}</Page>
+         .map((item, index) => {
+            return (
+               <Page key={item.number} onClick={e => { setCurrentPage(item.number) }} currentPage={currentPage === item.number} >
+                  <h3 >Сезон {item.number}</h3>
+               </Page>
+            )
          })}
       {portionCount > portionNumber && <Arrow onClick={() => { setPortionNumber(portionNumber + 1) }} >&#10095;</Arrow>}
    </Container>
 }
 
-export default SmallPagination;
+export default SectionPagination;

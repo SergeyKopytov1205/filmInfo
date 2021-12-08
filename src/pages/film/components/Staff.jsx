@@ -66,12 +66,14 @@ export default Staff
 
 const Card = styled.div`
    flex-basis: 200px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
    text-align: center;
 `
 const CardTitle = styled.h4`
    color: #555;
    font-size: 1.1em;
-   margin-bottom: 10px;
 `
 const CardList = styled.ul`
    display: flex;

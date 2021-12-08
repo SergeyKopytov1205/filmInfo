@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import Routes from "../Routes";
 import styled from "styled-components";
 
@@ -14,13 +14,13 @@ const Container = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Container>
         <Header />
         <Routes />
         <Footer />
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

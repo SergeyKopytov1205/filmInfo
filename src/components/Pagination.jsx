@@ -4,6 +4,7 @@ import styled from "styled-components";
 const List = styled.ul`
    display: flex;
    flex-direction: row;
+   flex-wrap: wrap;
    align-items: center;
    gap: 20px;
 `
