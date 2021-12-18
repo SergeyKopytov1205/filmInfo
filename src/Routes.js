@@ -10,9 +10,9 @@ const Routes = () => {
       <Switch>
          <Route exact path='/' component={HomeContainer} />
          <Route path='/populars' component={HomeContainer} />
+         <Route path='/search' component={HomeContainer} />
          <Route path='/await' component={HomeContainer} />
          <Route path='/filters' component={HomeContainer} />
-         <Route path='/search' component={HomeContainer} />
          <Route path='/film/:slug' component={FilmContainer} />
          <Route path='/name/:slug' component={ActorContainer} />
          <Redirect to='/' />

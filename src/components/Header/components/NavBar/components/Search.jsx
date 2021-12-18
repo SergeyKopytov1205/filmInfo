@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const SearchContainer = styled.div`
@@ -28,16 +29,30 @@ const Icon = styled.div`
 `
 
 const Search = () => {
+   const history = useHistory()
    const [keyWord, setKeyWord] = useState('')
    const handlerOnChange = (e) => {
       const value = e.target.value
       setKeyWord(value)
    }
 
+   function redirectOn() {
+      if (keyWord.length > 0) {
+         setKeyWord('')
+         return history.push(`/search?keyWord=${keyWord}`)
+      }
+   }
+   function handleKeyPress(event) {
+      if (keyWord.length > 0 && event.key === 'Enter') {
+         setKeyWord('')
+         return history.push(`/search?keyWord=${keyWord}`)
+      }
+   }
+
    return (
       <SearchContainer>
-         <Input value={keyWord} onChange={handlerOnChange} type="text" placeholder='Поиск по ключевым словам' />
-         <Icon>
+         <Input value={keyWord} onChange={handlerOnChange} type="text" placeholder='Поиск по ключевым словам' onKeyPress={e => { handleKeyPress(e) }} onBlur={redirectOn} />
+         <Icon onClick={redirectOn}>
             <ion-icon name="search"></ion-icon>
          </Icon>
       </SearchContainer>

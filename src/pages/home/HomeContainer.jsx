@@ -6,31 +6,33 @@ import { getFilms, setCurrentPageFilmsAC } from "../../redusers/filmsReducer";
 import useSwitchPath from '../../hooks/useSwitchPath'
 import Home from "./Home";
 import { getNextMonth } from "../../utils/utils";
+import { useLocation } from "react-router-dom";
 
-const HomeContainer = ({ match }) => {
+const HomeContainer = () => {
+   const location = useLocation()
    const statePremiers = useSelector(state => state.premiers)
    const stateTopFilms = useSelector(state => state.topFilms)
    const dispatch = useDispatch()
-   const [activePath, setActivePath] = useState(match.path)
-   const [params, title] = useSwitchPath(match.path, stateTopFilms.currentPage)
+   const [activePath, setActivePath] = useState(location.pathname)
+   const [params, title, query] = useSwitchPath(location, stateTopFilms.currentPage)
    const setCurrentPage = (page) => {
       dispatch(setCurrentPageFilmsAC(page))
    }
 
+   console.log(query);
    useEffect(() => {
-      if (activePath !== match.path) {
+      if (activePath !== location.pathname) {
          dispatch(setCurrentPageFilmsAC(1))
-         setActivePath(match.path)
+         setActivePath(location.pathname)
       }
-   }, [dispatch, match.path, activePath])
-
+   }, [dispatch, location.pathname, activePath])
 
    useEffect(() => {
-      dispatch(getPremiers(getNextMonth(), `/api/v2.2/films/premieres`))
-      dispatch(getFilms(params, '/api/v2.2/films/top'))
-   }, [dispatch, params, statePremiers.currentPage])
-
-
+      if (query.length > 0) {
+         dispatch(getPremiers(getNextMonth(), `/api/v2.2/films/premieres`))
+         dispatch(getFilms(params, query))
+      }
+   }, [dispatch, params, statePremiers.currentPage, query])
 
    return (
       <Home statePremiers={statePremiers} stateTopFilms={stateTopFilms} setCurrentPage={setCurrentPage} title={title} />

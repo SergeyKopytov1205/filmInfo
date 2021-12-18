@@ -73,7 +73,7 @@ const SectionFilms = ({ isLoading, fetchError, films, title, totalCount, current
    }
    return (
       <Container>
-         <Header>{title}</Header>
+         <Header>{films.length !== 0 ? title : 'Ничего не найдено'}</Header>
          <List>
             {films.map((item) => {
                return (

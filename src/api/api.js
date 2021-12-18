@@ -12,6 +12,7 @@ export async function getAllFilms(params, query) {
    return response.data
 }
 
+
 export async function getFilmData(url) {
    const response = await instance.get(url)
    return response.data;
