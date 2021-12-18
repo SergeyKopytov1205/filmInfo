@@ -14,7 +14,7 @@ const useFilteredObject = (data, key) => {
       }
    }, [data, key])
 
-   return [filteredOject]
+   return filteredOject
 }
 
 export default useFilteredObject

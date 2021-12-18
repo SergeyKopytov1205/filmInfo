@@ -5,6 +5,7 @@ import { getPremiers } from "../../redusers/premiersReducer";
 import { getFilms, setCurrentPageFilmsAC } from "../../redusers/filmsReducer";
 import useSwitchPath from '../../hooks/useSwitchPath'
 import Home from "./Home";
+import { getNextMonth } from "../../utils/utils";
 
 const HomeContainer = ({ match }) => {
    const statePremiers = useSelector(state => state.premiers)
@@ -12,7 +13,6 @@ const HomeContainer = ({ match }) => {
    const dispatch = useDispatch()
    const [activePath, setActivePath] = useState(match.path)
    const [params, title] = useSwitchPath(match.path, stateTopFilms.currentPage)
-
    const setCurrentPage = (page) => {
       dispatch(setCurrentPageFilmsAC(page))
    }
@@ -26,7 +26,7 @@ const HomeContainer = ({ match }) => {
 
 
    useEffect(() => {
-      dispatch(getPremiers({ year: '2021', month: 'DECEMBER' }, `/api/v2.2/films/premieres`))
+      dispatch(getPremiers(getNextMonth(), `/api/v2.2/films/premieres`))
       dispatch(getFilms(params, '/api/v2.2/films/top'))
    }, [dispatch, params, statePremiers.currentPage])
 

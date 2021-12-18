@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPersonInfo, resetPersonDataAC } from "../../redusers/personReducer";
 import Actor from "./Actor";
+import useFilteredObject from "../../hooks/useFilteredObject";
 
 const ActorContainer = ({ match }) => {
    const personId = match.params.slug
@@ -15,6 +16,8 @@ const ActorContainer = ({ match }) => {
       }
    }, [dispatch, personId])
 
-   return <Actor data={person.personData} isLoading={person.isLoading} fetchError={person.fetchError} />
+   const profKeyOfData = useFilteredObject(person.personData.films, 'professionKey')
+
+   return <Actor data={person.personData} films={profKeyOfData} isLoading={person.isLoading} fetchError={person.fetchError} />
 }
 export default ActorContainer

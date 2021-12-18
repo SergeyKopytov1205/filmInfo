@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SectionPagination from "./Components/SectionPagination";
-import { someDate } from "../../../../utils/utils";
+import { getTranslatedDate } from "../../../../utils/utils";
 
 const Container = styled.div`
    display: flex;
@@ -69,7 +69,7 @@ const Seasons = ({ data, isLoading, fetchError, slug }) => {
                         <Episod key={item.episodeNumber}>
                            <h4>{`Эпизод ${item.episodeNumber} ${item.nameRu ? item.nameRu : ''}`}</h4>
                            {item.synopsis && <p>{item.synopsis}</p>}
-                           <div>Дата выхода: {someDate(item.releaseDate)}</div>
+                           <div>Дата выхода: {getTranslatedDate(item.releaseDate)}</div>
                         </Episod>
                      )
                   })}

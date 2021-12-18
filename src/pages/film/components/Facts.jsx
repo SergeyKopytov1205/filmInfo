@@ -30,7 +30,7 @@ const Content = styled.div`
 `
 
 const Facts = ({ data, isLoading, fetchError }) => {
-   const [filteredOject] = useFilteredObject(data.items, 'type')
+   const filteredOject = useFilteredObject(data.items, 'type')
    const [{ slicedObject: facts, totalPage: totalPageFacts, currentPage: currentPageFacts }, setCurrentPageFacts] = usePagination(filteredOject.FACT, 10)
    const [{ slicedObject: bloopers, totalPage: totalPageBloopers, currentPage: currentPageBloopers }, setCurrentPageBloopers] = usePagination(filteredOject.BLOOPER, 10)
 

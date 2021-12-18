@@ -2,20 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import useObjectToString from "../../../hooks/useObjectToString";
 
-
 const Container = styled.section`
    display: flex;
    align-items: flex-start; 
    gap: 20px;
 `
 const Poster = styled.div`
-   flex-shrink: 0;
-   flex-basis: 240px;
+   flex: 1 0 240px;
    height: 320px;
    position: relative;
    border-radius: 10px;
    overflow: hidden;
-   img {
+   & img {
       width: 100%;
       height: 100%;
       object-fit: cover;
