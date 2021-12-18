@@ -26,7 +26,7 @@ const useSwitchPath = (location, currentPage) => {
             setQuery('/api/v2.2/films/top')
             break;
          case '/search':
-            setParams({ keyword: parsed.keyWord })
+            setParams({ keyword: parsed.keyWord, page: currentPage })
             setTitle('По запросу найдено')
             setQuery('/api/v2.1/films/search-by-keyword')
             break;
