@@ -19,7 +19,7 @@ export default function filmsReducer(state = initialState, action) {
       case SET_FILMS:
          return {
             ...state,
-            films: action.payload.films,
+            films: action.payload.films || action.payload.items,
             pagesCount: action.payload.pagesCount,
             isLoading: false
          }

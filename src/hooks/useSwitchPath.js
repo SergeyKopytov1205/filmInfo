@@ -3,7 +3,6 @@ import { parse } from 'query-string';
 
 const useSwitchPath = (location, currentPage) => {
    const path = location.pathname
-   const parsed = parse(location.search)
    const [params, setParams] = useState({})
    const [query, setQuery] = useState('')
    const [title, setTitle] = useState('')
@@ -26,17 +25,16 @@ const useSwitchPath = (location, currentPage) => {
             setQuery('/api/v2.2/films/top')
             break;
          case '/search':
-            setParams({ keyword: parsed.keyWord, page: currentPage })
+            const parsed = parse(location.search)
+            const query = Object.keys(parsed).includes('keyword') ? '/api/v2.1/films/search-by-keyword' : '/api/v2.2/films'
+            setParams({ ...parsed, page: currentPage })
             setTitle('По запросу найдено')
-            setQuery('/api/v2.1/films/search-by-keyword')
+            setQuery(query)
             break;
          default:
             break;
       }
-      return () => {
-         setParams({})
-      }
-   }, [currentPage, path, parsed.keyWord])
+   }, [currentPage, path, location.search])
 
    return [params, title, query]
 }

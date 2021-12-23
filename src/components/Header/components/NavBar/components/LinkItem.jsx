@@ -23,9 +23,9 @@ const Content = styled.div`
    }
 `
 
-const ItemLink = ({ url, text, icon }) => {
+const ItemLink = ({ url, text, icon, handlerOnClick }) => {
    return (
-      <Item>
+      <Item onClick={handlerOnClick}>
          <NavLink exact to={url}>
             <Content>
                <ion-icon name={icon}></ion-icon>

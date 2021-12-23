@@ -7,7 +7,7 @@ const AboutContainer = styled.section`
    gap: 20px;
 `
 const Poster = styled.div`
-   flex: 1 0 240px;
+   flex: 0 0 240px;
    height: 320px;
    position: relative;
    border-radius: 10px;

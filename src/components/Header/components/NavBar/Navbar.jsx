@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Filter from "./components/Filter";
+import ItemFilter from "./components/FilterItem";
 import ItemLink from "./components/LinkItem";
 import Search from "./components/Search";
 
 const Container = styled.div`
-   position: relative;
    display: flex;
    margin-left: auto;
 `
@@ -16,15 +15,18 @@ const List = styled.ul`
 `
 
 
-const Navbar = () => {
+const Navbar = ({isActive, handlerOnClick}) => {
+   
+
+
    return (
-      <Container>
+      <Container >
          <List>
             <ItemLink url='/' text='Лучшие' icon='thumbs-up' />
             <ItemLink url='/populars' text='Популярные' icon='heart' />
             <ItemLink url='/await' text='Ожидаемые' icon='time' />
             <Search />
-            <Filter />
+            <ItemFilter handlerOnClick={handlerOnClick} url='#' text='Поиск по фильтру' icon='options' isActive={isActive} />
          </List>
       </Container>
    )

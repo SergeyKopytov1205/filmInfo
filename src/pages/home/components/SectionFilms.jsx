@@ -77,8 +77,8 @@ const SectionFilms = ({ isLoading, fetchError, films, title, totalCount, current
          <List>
             {films.map((item) => {
                return (
-                  <Item key={item.filmId}>
-                     <StyledLink to={`/film/${item.filmId}`}>
+                  <Item key={item.filmId || item.kinopoiskId}>
+                     <StyledLink to={`/film/${item.filmId || item.kinopoiskId}`}>
                         <Contant>
                            <Image src={item.posterUrlPreview} alt={item.nameRu} />
                            <Description>

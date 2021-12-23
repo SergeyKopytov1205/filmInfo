@@ -40,3 +40,11 @@ export default function translateProffession(string) {
          return string
    }
 }
+
+export const handleOnChangeCheckBox = (event, array, setArray) => {
+   let newArr = [...array, event.target.id]
+   if (array.includes(event.target.id)) {
+      newArr = newArr.filter(item => item !== event.target.id);
+   }
+   setArray(newArr)
+}

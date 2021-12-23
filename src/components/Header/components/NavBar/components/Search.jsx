@@ -39,13 +39,13 @@ const Search = () => {
    function redirectOn() {
       if (keyWord.length > 0) {
          setKeyWord('')
-         return history.push(`/search?keyWord=${keyWord}`)
+         return history.push(`/search?keyword=${keyWord}`)
       }
    }
    function handleKeyPress(event) {
       if (keyWord.length > 0 && event.key === 'Enter') {
          setKeyWord('')
-         return history.push(`/search?keyWord=${keyWord}`)
+         return history.push(`/search?keyword=${keyWord}`)
       }
    }
 
