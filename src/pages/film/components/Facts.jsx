@@ -29,7 +29,7 @@ const Content = styled.div`
    }
 `
 
-const Facts = ({ data, isLoading, fetchError }) => {
+const Facts = React.memo(({ data, isLoading, fetchError }) => {
    const filteredOject = useFilteredObject(data.items, 'type')
    const [{ slicedObject: facts, totalPage: totalPageFacts, currentPage: currentPageFacts }, setCurrentPageFacts] = usePagination(filteredOject.FACT, 10)
    const [{ slicedObject: bloopers, totalPage: totalPageBloopers, currentPage: currentPageBloopers }, setCurrentPageBloopers] = usePagination(filteredOject.BLOOPER, 10)
@@ -51,7 +51,7 @@ const Facts = ({ data, isLoading, fetchError }) => {
          )}
       </Container>
    )
-}
+})
 
 const FactItem = ({ data, title, totalPage, currentPage, setCurrentPage }) => {
 

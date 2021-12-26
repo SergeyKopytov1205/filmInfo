@@ -45,6 +45,7 @@ const Image = styled.img`
 `
 
 const SliderFilms = React.memo(({ isLoading, fetchError, films, title }) => {
+   
    if (isLoading) {
       return <div>Loading...</div>
    }

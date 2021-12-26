@@ -23,7 +23,8 @@ const Content = styled.div`
 
 `
 
-const Staff = ({ data, isLoading, fetchError, slug }) => {
+const Staff = React.memo(({ data, isLoading, fetchError, slug }) => {
+
    const filteredOject = useFilteredObject(data, 'professionKey')
    const [{ slicedObject: directors, totalPage: totalPageDirectors, currentPage: currentPageDirectors }, setCurrentPageDirectors] = usePagination(filteredOject.DIRECTOR, 10, slug)
    const [{ slicedObject: actors, totalPage: totalPageActors, currentPage: currentPageActors }, setCurrentPageActors] = usePagination(filteredOject.ACTOR, 10, slug)
@@ -60,7 +61,7 @@ const Staff = ({ data, isLoading, fetchError, slug }) => {
          </Content>
       </Container>
    )
-}
+})
 
 export default Staff
 

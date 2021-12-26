@@ -46,11 +46,6 @@ const initialState = {
       isLoading: null,
       fetchError: null
    },
-   filmReviews: {
-      data: [],
-      isLoading: null,
-      fetchError: null
-   },
    filmStaff: {
       data: [],
       isLoading: null,
@@ -89,7 +84,6 @@ export const getFilmInfo = (id) => {
       filmVideos: `/api/v2.2/films/${id}/videos`,
       filmSimilars: `/api/v2.2/films/${id}/similars`,
       filmFrames: `/api/v2.1/films/${id}/frames`,
-      filmReviews: `/api/v1/reviews?filmId=${id}`,
       filmStaff: `/api/v1/staff?filmId=${id}`
    }
 

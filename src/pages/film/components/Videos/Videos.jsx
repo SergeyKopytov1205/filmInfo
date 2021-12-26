@@ -8,7 +8,7 @@ const Container = styled.section`
    gap: 10px;
 `
 
-const Videos = ({ data, isLoading, fetchError, slug }) => {
+const Videos = React.memo(({ data, isLoading, fetchError }) => {
 
    const [url, setUrl] = useState('')
 
@@ -35,6 +35,6 @@ const Videos = ({ data, isLoading, fetchError, slug }) => {
          )}
       </>
    )
-}
+})
 
 export default Videos

@@ -31,7 +31,8 @@ const Episod = styled.div`
 `
 
 
-const Seasons = ({ data, isLoading, fetchError, slug }) => {
+const Seasons = React.memo(({ data, isLoading, fetchError, slug }) => {
+
    const [activePath, setActivePath] = useState(slug)
    useEffect(() => {
       if (activePath !== slug) {
@@ -78,6 +79,6 @@ const Seasons = ({ data, isLoading, fetchError, slug }) => {
          )}
       </>
    )
-}
+})
 
 export default Seasons

@@ -17,6 +17,11 @@ export async function getFilters() {
    return response.data
 }
 
+export async function getReviewData (id, page = 1) {
+   const response = await instance.get(`/api/v1/reviews?filmId=${id}&page=${page}`)
+   return response.data
+}
+
 export async function getFilmData(url) {
    const response = await instance.get(url)
    return response.data;

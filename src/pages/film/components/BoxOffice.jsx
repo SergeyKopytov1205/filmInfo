@@ -1,6 +1,6 @@
 import React from "react";
 
-const BoxOffice = ({ data, isLoading, fetchError }) => {
+const BoxOffice = React.memo(({ data, isLoading, fetchError }) => {
    
    if (isLoading) {
       return <div>Loading...</div>
@@ -18,7 +18,7 @@ const BoxOffice = ({ data, isLoading, fetchError }) => {
          <BoxItem title='Сборы в России' type='RUS' data={data.items} />
       </div>
    )
-}
+})
 
 const BoxItem = ({data, title, type}) => {
    return (

@@ -1,6 +1,6 @@
 export const getTranslatedDate = (data) => {
    let someDate = new Date(data)
-   return someDate.toLocaleString('ru-RU', { month: 'long', day: 'numeric', year: 'numeric' })
+   return someDate.toLocaleString('ru-RU', { month: 'long', day: 'numeric', year: 'numeric', hour: "numeric", minute: "numeric" })
 }
 
 export const getNextMonth = () => {
@@ -36,6 +36,8 @@ export default function translateProffession(string) {
          return 'Продюсер'
       case 'WRITER':
          return 'Сценарист'
+      case 'COMPOSER':
+         return 'Композитор'
       default:
          return string
    }

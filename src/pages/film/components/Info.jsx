@@ -63,7 +63,7 @@ const Aside = styled.aside`
    }
 `
 
-const Info = ({ data, isLoading, fetchError }) => {
+const Info = React.memo(({ data, isLoading, fetchError }) => {
 
    const [countries] = useObjectToString(data.countries, 'country')
    const [genres] = useObjectToString(data.genres, 'genre')
@@ -109,6 +109,6 @@ const Info = ({ data, isLoading, fetchError }) => {
          </Aside>
       </Container>
    )
-}
+})
 
 export default Info

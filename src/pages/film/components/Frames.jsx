@@ -15,7 +15,8 @@ const Title = styled.h3`
 const Content = styled.div`
    display: flex;
    flex-wrap: wrap;
-   gap: 20px;
+   justify-content: space-between;
+   row-gap: 20px;
 `
 const Image = styled.div`
    flex-basis: 300px;
@@ -31,7 +32,7 @@ const Picture = styled.img`
    object-position: 50% 0;
 `
 
-const Frames = ({ data, isLoading, fetchError, slug }) => {
+const Frames = React.memo(({ data, isLoading, fetchError, slug }) => {
    const [{ slicedObject, totalPage, currentPage }, setCurrentPage] = usePagination(data.frames, 20, slug)
 
    if (isLoading) {
@@ -62,6 +63,6 @@ const Frames = ({ data, isLoading, fetchError, slug }) => {
       </>
    )
 
-}
+})
 
 export default Frames

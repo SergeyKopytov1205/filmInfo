@@ -6,7 +6,7 @@ import Facts from './components/Facts'
 import BoxOffice from './components/BoxOffice'
 import Videos from './components/Videos/Videos'
 import Frames from './components/Frames'
-//import Reviews from './components/Reviews' //доделать!
+import ReviewsContainer from './components/Reviews/ReviewsContainer'
 import Staff from './components/Staff'
 import styled from 'styled-components'
 import SliderFilms from '../home/components/SliderFilms'
@@ -18,7 +18,7 @@ const Container = styled.div`
    padding: 40px;
 `
 
-const Film = ({ state, slug }) => {
+const Film = React.memo(({ state, slug, review }) => {
 
    return (
       <Container>
@@ -31,9 +31,9 @@ const Film = ({ state, slug }) => {
          <Seasons data={state.filmSeasons.data} isLoading={state.filmSeasons.isLoading} fetchError={state.filmSeasons.fetchError} slug={slug} />
          <Videos data={state.filmVideos.data} isLoading={state.filmVideos.isLoading} fetchError={state.filmVideos.fetchError} slug={slug} />
          <Frames data={state.filmFrames.data} isLoading={state.filmFrames.isLoading} fetchError={state.filmFrames.fetchError} slug={slug} />
-         {/* <Reviews data={state.filmReviews.data} isLoading={state.filmReviews.isLoading} fetchError={state.filmReviews.fetchError} /> */}
+         <ReviewsContainer slug={slug} />
       </Container>
 
    )
-}
+})
 export default Film
